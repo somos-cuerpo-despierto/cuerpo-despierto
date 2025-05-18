@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar"
 import { Box, Grid, Typography } from "@mui/material";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
@@ -25,7 +26,7 @@ const Home = () => {
             <Grid item xs={12} md={5} sx={{ display: "flex", justifyContent: "" }}>
               <Box sx={{ width: "100%", maxWidth: 250 }}>
                 <video
-                  src="src/assets/Resumen Taller.mov"
+                  src=""
                   controls
                   controlsList="nodownload"
                   onContextMenu={(e) => e.preventDefault()}
@@ -51,6 +52,7 @@ const Home = () => {
             </Grid>
           </Grid>
         </Box>
+        <Footer />
       </div>
     </>
   );
