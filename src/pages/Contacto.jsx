@@ -1,15 +1,23 @@
 import Navbar from "../components/Navbar";
 import Form from "../components/Form";
 import Footer from "../components/Footer";
+import { Box } from "@mui/material";
 
 const Contacto = () => {
-
-    return (       
-         <>
+    return (
+        <Box
+            sx={{
+                minHeight: "100vh",
+                display: "flex",
+                flexDirection: "column",
+            }}
+        >
             <Navbar />
-            <Form />
+            <Box sx={{ flex: 1 }}>
+                <Form />
+            </Box>
             <Footer />
-        </>
+        </Box>
     );
 }
 
