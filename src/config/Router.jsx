@@ -3,6 +3,7 @@ import Home from '../pages/Home';
 import QuienesSomos from "../pages/QuienesSomos";
 import QueHacemos from'../pages/QueHacemos';
 import Contacto from '../pages/Contacto';
+import IniciarSesion from '../pages/IniciarSesion';
 import { AuthProvider } from './AuthContext';
 
 
@@ -17,7 +18,7 @@ export default function Router() {
             <Route path="/quienesSomos" element={<QuienesSomos />} />
             <Route path="/queHacemos" element={<QueHacemos />} />
             <Route path="/contacto" element={<Contacto />} />
-            <Route path="/iniciarSesion" element={<div>Iniciar Sesión</div>} />
+            <Route path="/iniciarSesion" element={<IniciarSesion /> } />
         </Routes>
         </BrowserRouter>
         </AuthProvider>
