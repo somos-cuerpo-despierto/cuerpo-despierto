@@ -54,16 +54,9 @@ const QuienesSomos = () => {
                     marginBottom: 16,
                   }}
                 />
-                <Button
-                  variant="contained"
-                  sx={{
-                    fontFamily: "Anton, sans-serif",
-                    mb: 2,
-                  }}
-                  onClick={() => handleToggle(idx)}
-                >
-                  {open[idx] ? "Ocultar info" : `Sobre ${persona.nombre}`}
-                </Button>
+                <Btn onClick={() => handleToggle(idx)}>
+                  {open[idx] ? "Ocultar" : "Mostrar"} {persona.nombre}
+                </Btn>
                 <Collapse in={open[idx]}>
                   <Typography
                     sx={{

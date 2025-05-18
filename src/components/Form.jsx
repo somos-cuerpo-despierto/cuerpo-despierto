@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form";
 import { Box, TextField, Button, Typography } from "@mui/material";
 import { useState } from "react";
+import Btn from "./Button";
 
-const FormularioContacto = () => {
+const Form = () => {
   const [enviado, setEnviado] = useState(false);
 
   const {
@@ -98,18 +99,9 @@ const FormularioContacto = () => {
         multiline
         minRows={3}
       />
-      <Button
-        type="submit"
-        variant="contained"
-        sx={{
-          backgroundColor: "#F57927",
-          color: "#000",
-          fontFamily: "Anton, sans-serif",
-          "&:hover": { backgroundColor: "#fb8c00" },
-        }}
-      >
+      <Btn type="submit">
         Enviar
-      </Button>
+      </Btn>
       {enviado && (
         <Typography color="success.main" sx={{ mt: 1 }}>
           ¡Formulario enviado correctamente!
@@ -119,4 +111,4 @@ const FormularioContacto = () => {
   );
 };
 
-export default FormularioContacto;
+export default Form;

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Box, Grid, Button, Typography, Collapse } from "@mui/material";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Btn from "../components/Button";
 
 const fotoReadaptacion = import.meta.env.VITE_FOTO_READAPTACION;
 const fotoConsciencia = import.meta.env.VITE_FOTO_CONSCIENCIA;
@@ -89,20 +90,9 @@ const QueHacemos = () => {
                 </Box>
                 {/* Botón */}
                 <Box sx={{ width: "100%", display: "flex", justifyContent: "center", py: 2 }}>
-                  <Button
-                    variant="contained"
-                    sx={{
-                      fontFamily: "Anton, sans-serif",
-                      backgroundColor: "#F57927",
-                      color: "#000",
-                      "&:hover": {
-                        backgroundColor: "#fb8c00",
-                      },
-                    }}
-                    onClick={() => handleToggle(idx)}
-                  >
+                  <Btn onClick={() => handleToggle(idx)}>
                     {open[idx] ? "Ocultar info" : `Sobre ${trabajo.nombre}`}
-                  </Button>
+                  </Btn>
                 </Box>
                 {/* Texto */}
                 <Collapse in={open[idx]} sx={{ width: "100%", px: 3, pb: 2 }}>

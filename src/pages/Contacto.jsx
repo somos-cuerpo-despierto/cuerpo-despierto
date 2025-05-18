@@ -1,5 +1,5 @@
 import Navbar from "../components/Navbar";
-import FormularioContacto from "../components/FormularioContacto";
+import Form from "../components/Form";
 import Footer from "../components/Footer";
 
 const Contacto = () => {
@@ -7,7 +7,7 @@ const Contacto = () => {
     return (       
          <>
             <Navbar />
-            <FormularioContacto />
+            <Form />
             <Footer />
         </>
     );
