@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Box, Typography, Tabs, Tab, Paper } from "@mui/material";
+import { Box, Tabs, Tab, Paper, Typography } from "@mui/material";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Form from "../components/Form";
 
-// Campos base reutilizables
+
 const emailField = {
   name: "email",
   label: "Correo electrónico",
@@ -34,7 +34,7 @@ const passwordField = {
   type: "password",
   required: true,
   validation: passwordValidation,
-
+  helperText: "Mínimo 8 caracteres, una mayúscula, una minúscula, un número y un símbolo.",
 };
 
 const loginFields = [emailField, passwordField];
@@ -66,10 +66,15 @@ const registerFields = [
       },
     },
   },
-  emailField,
+  {
+    ...emailField,
+    placeholder: "ejemplo@correo.com",
+    helperText: "Ejemplo: ejemplo@correo.com",
+  },
   {
     ...passwordField,
     label: "Crear contraseña",
+    helperText: "Mínimo 8 caracteres, una mayúscula, una minúscula, un número y un símbolo.",
   },
 ];
 
@@ -81,65 +86,41 @@ const IniciarSesion = () => {
   };
 
   const onRegister = (data) => {
+
     alert("Usuario registrado: " + data.email);
   };
 
   return (
-    <>
-      <Box
-        sx={{
-          minHeight: "100vh",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <Navbar />
-        <Box
-          sx={{
-            flex: 1,
-            maxWidth: 900,
-            mx: "auto",
-            mt: 8,
-            mb: 4,
-            display: "flex",
-            flexDirection: { xs: "column", md: "row" },
-            gap: 4,
-            justifyContent: "center",
-            alignItems: "flex-start",
-            color: "#000",
-          }}
-        >
-          <Paper sx={{ flex: 1, p: 3, minWidth: 320 }}>
-            <Tabs value={tab} onChange={(_, v) => setTab(v)} centered>
-              <Tab label="Iniciar Sesión" />
-              <Tab label="Registrarse" />
-            </Tabs>
-            {tab === 0 && (
+    <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      <Navbar />
+      <Box sx={{ flex: 1, display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <Paper sx={{ width: "100%", maxWidth: 420, p: 3 }}>
+          <Tabs value={tab} onChange={(_, v) => setTab(v)} centered>
+            <Tab label="Iniciar Sesión" />
+            <Tab label="Registrarse" />
+          </Tabs>
+          {tab === 0 && (
+            <Form
+              fields={loginFields}
+              onSubmit={onLogin}
+              title="Iniciar Sesión"
+              btnText="Iniciar sesión"
+            />
+          )}
+          {tab === 1 && (
+            <>
               <Form
-                fields={loginFields}
-                onSubmit={onLogin}
-                title="Iniciar Sesión"
-                btnText="Iniciar sesión"
+                fields={registerFields}
+                onSubmit={onRegister}
+                title="Registrarse"
+                btnText="Registrarse"
               />
-            )}
-            {tab === 1 && (
-              <>
-                <Form
-                  fields={registerFields}
-                  onSubmit={onRegister}
-                  title="Registrarse"
-                  btnText="Registrarse"
-                />
-                <Typography sx={{ fontSize: 13, mt: 1, textAlign: "center", color: "#666" }}>
-                  La contraseña debe tener mínimo 8 caracteres, una mayúscula, una minúscula, un número y un símbolo.
-                </Typography>
-              </>
-            )}
-          </Paper>
-        </Box>
-        <Footer />
+            </>
+          )}
+        </Paper>
       </Box>
-    </>
+      <Footer />
+    </Box>
   );
 };
 
