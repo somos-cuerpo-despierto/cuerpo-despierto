@@ -1,7 +1,10 @@
 import { useForm } from "react-hook-form";
-import { Box, TextField, Button, Typography } from "@mui/material";
+import { Box, TextField, Typography, Alert } from "@mui/material";
 import { useState } from "react";
 import Btn from "./Button";
+
+const sanitizeInput = (value) =>
+  value.replace(/<[^>]*>?/gm, ""); // Elimina etiquetas HTML
 
 const Form = () => {
   const [enviado, setEnviado] = useState(false);
@@ -10,6 +13,7 @@ const Form = () => {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm();
 
@@ -36,8 +40,8 @@ const Form = () => {
       }}
       autoComplete="off"
     >
-      <Typography variant="h5" sx={{ fontFamily: "Anton, sans-serif", mb: 1 }}>
-        Contáctanos
+      <Typography variant="h5" sx={{ fontFamily: "Anton, sans-serif", mb: 1, textAlign: "center" }}>
+        Contacto
       </Typography>
       <TextField
         label="Nombre"
@@ -75,15 +79,16 @@ const Form = () => {
       />
       <TextField
         label="Correo electrónico"
+        placeholder="ejemplo@correo.com"
         {...register("email", {
           required: "El correo es obligatorio",
           pattern: {
             value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-            message: "Introduce un correo electrónico válido",
+            message: "Introduce un correo electrónico válido. Ejemplo: ejemplo@correo.com",
           },
         })}
         error={!!errors.email}
-        helperText={errors.email?.message}
+        helperText={errors.email?.message || "Ejemplo: ejemplo@correo.com"}
         required
         type="email"
       />
@@ -92,20 +97,28 @@ const Form = () => {
         {...register("pregunta", {
           required: "Por favor, escribe tu consulta",
           minLength: { value: 5, message: "Mínimo 5 caracteres" },
+          maxLength: { value: 200, message: "Máximo 200 caracteres" },
+          validate: (value) =>
+            sanitizeInput(value) === value || "No se permiten etiquetas HTML o scripts",
         })}
         error={!!errors.pregunta}
-        helperText={errors.pregunta?.message}
+        helperText={
+          errors.pregunta?.message ||
+          "Máximo 200 caracteres."
+        }
         required
         multiline
         minRows={3}
+        inputProps={{ maxLength: 200 }}
+        onChange={(e) => setValue("pregunta", sanitizeInput(e.target.value))}
       />
       <Btn type="submit">
         Enviar
       </Btn>
       {enviado && (
-        <Typography color="success.main" sx={{ mt: 1 }}>
+        <Alert severity="success" sx={{ mt: 1, textAlign: "center" }}>
           ¡Formulario enviado correctamente!
-        </Typography>
+        </Alert>
       )}
     </Box>
   );

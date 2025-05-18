@@ -10,6 +10,7 @@ const Contacto = () => {
                 minHeight: "100vh",
                 display: "flex",
                 flexDirection: "column",
+                color: "#000",
             }}
         >
             <Navbar />
