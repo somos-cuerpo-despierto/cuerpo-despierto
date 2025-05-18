@@ -3,11 +3,14 @@ import Home from '../pages/Home';
 import QuienesSomos from "../pages/QuienesSomos";
 import QueHacemos from'../pages/QueHacemos';
 import Contacto from '../pages/Contacto';
+import { AuthProvider } from './AuthContext';
+
 
 
 
 export default function Router() {
     return (
+        <AuthProvider>
         <BrowserRouter>
         <Routes>
             <Route path="/" element={<Home />} />
@@ -17,6 +20,7 @@ export default function Router() {
             <Route path="/iniciarSesion" element={<div>Iniciar Sesión</div>} />
         </Routes>
         </BrowserRouter>
+        </AuthProvider>
     );
     }
 
