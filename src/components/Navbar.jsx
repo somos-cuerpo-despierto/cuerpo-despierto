@@ -34,7 +34,7 @@ export default function Navbar() {
                 fontFamily: 'Anton, sans-serif',
                 color: 'inherit',
                 '&.active': {
-                  color: 'orange',
+                  color: '#F57927',
                 },
               }}
               end={item.path === "/"}
