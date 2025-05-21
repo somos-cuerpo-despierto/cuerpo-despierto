@@ -3,7 +3,7 @@ import { Box, Tabs, Tab, Paper } from "@mui/material";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Form from "../components/Form";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../config/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const IniciarSesion = () => {

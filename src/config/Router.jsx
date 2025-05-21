@@ -4,6 +4,16 @@ import QuienesSomos from "../pages/QuienesSomos";
 import QueHacemos from'../pages/QueHacemos';
 import Contacto from '../pages/Contacto';
 import IniciarSesion from '../pages/IniciarSesion';
+import ReservaClases from '../pages/ReservaClases';
+import { useAuth } from "../config/AuthContext";
+import { Navigate } from "react-router-dom";
+
+// Componente para proteger rutas privadas
+function PrivateRoute({ children }) {
+    const { user } = useAuth();
+    if (!user) return <Navigate to="/iniciarSesion" />;
+    return children;
+}
 
 export default function Router() {
     return (
@@ -14,6 +24,14 @@ export default function Router() {
                 <Route path="/queHacemos" element={<QueHacemos />} />
                 <Route path="/contacto" element={<Contacto />} />
                 <Route path="/iniciarSesion" element={<IniciarSesion />} />
+                <Route
+                    path="/reserva-clases"
+                    element={
+                        <PrivateRoute>
+                            <ReservaClases />
+                        </PrivateRoute>
+                    }
+                />
             </Routes>
         </BrowserRouter>
     );
