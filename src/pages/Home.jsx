@@ -33,7 +33,6 @@ const Home = () => {
               mx: "auto",
             }}
           >
-            {/* Video vertical */}
             {videoHome && (
               <Box
                 sx={{
@@ -64,7 +63,6 @@ const Home = () => {
                 />
               </Box>
             )}
-            {/* Texto */}
             <Box sx={{ width: "100%", maxWidth: 600, textAlign: "center", flex: 1 }}>
               <Typography
                 variant="h4"

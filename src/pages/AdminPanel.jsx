@@ -69,3 +69,8 @@ const AdminPanel = () => {
 };
 
 export default AdminPanel;
+
+// Al hacer login y recibir el token y el rol:
+// login({ email: data.email, rol: result.rol });
+// localStorage.setItem("token", result.token);
+// localStorage.setItem("rol", result.rol);

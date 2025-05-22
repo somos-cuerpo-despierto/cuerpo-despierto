@@ -5,22 +5,33 @@ import Footer from "../components/Footer";
 import Form from "../components/Form";
 import { useAuth } from "../config/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { authenticateUser } from "../api/axios";
 
 const IniciarSesion = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const [tab, setTab] = useState(0);
 
-  const onLogin = (data) => {
-    // Simula autenticación y rol
-    const usuario = { email: data.email, rol: data.email === "admin@admin.com" ? "admin" : "usuario" };
-    login(usuario);
+  const onLogin = async (data) => {
+    try {
+      const result = await authenticateUser(data.email, data.password);
 
-    // Redirige según el rol
-    if (usuario.rol === "admin") {
-      navigate("/admin");
-    } else {
-      navigate("/clases");
+      if (result.success) {
+       
+        const usuario = { email: data.email, rol: result.rol || "usuario" };
+        login(usuario);
+
+        if (usuario.rol === "admin") {
+          navigate("/admin");
+        } else {
+          navigate("/clases");
+        }
+      } else {
+        alert("Correo o contraseña incorrectos");
+      }
+    } catch (error) {
+      console.error("Error al autenticar:", error);
+      alert("Error de conexión o del servidor");
     }
   };
 

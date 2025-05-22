@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 const navItems = [
   { label: "Inicio", path: "/" },
@@ -11,9 +11,13 @@ const navItems = [
   { label: "¿Qué Hacemos?", path: "/queHacemos" },
   { label: "Contacto", path: "/contacto" },
   { label: "Iniciar Sesión", path: "/iniciarSesion" },
+  { label: "Clases", path: "/clases" },
+ 
 ];
 
 export default function Navbar() {
+  const user = null; 
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ bgcolor: "#000" }}>
@@ -42,6 +46,7 @@ export default function Navbar() {
               {item.label}
             </Button>
           ))}
+          {user && user.rol === "admin" && <Link to="/admin">Panel Admin</Link>}
         </Toolbar>
       </AppBar>
     </Box>

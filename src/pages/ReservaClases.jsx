@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useAuth } from "../config/AuthContext";
-import { Navigate, Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-const API_URL = "http://localhost:8080"; // Cambia esto por la URL real de tu backend
+const API_URL = "http://localhost:8080";
 
 function ReservaClases() {
   const [clases, setClases] = useState([]);
@@ -52,32 +50,6 @@ function ReservaClases() {
     }
   };
 
-  const onRegister = async (data) => {
-    try {
-      const res = await fetch("http://localhost:8080/api/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          nombre: data.nombre,
-          apellido: data.apellido,
-          email: data.email,
-          password: data.password,
-        }),
-      });
-
-      if (!res.ok) {
-        setMensaje("No se pudo registrar el usuario");
-        return;
-      }
-
-      setMensaje("¡Registro exitoso! Ahora puedes iniciar sesión.");
-      // Si quieres, cambia el tab a "Iniciar Sesión" automáticamente:
-      // setTab(0);
-    } catch {
-      setMensaje("Error de conexión");
-    }
-  };
-
   return (
     <div>
       <Navbar />
@@ -97,31 +69,5 @@ function ReservaClases() {
     </div>
   );
 }
-
-function PrivateRoute({ children }) {
-  const { user } = useAuth();
-  if (!user) return <Navigate to="/iniciarSesion" />;
-  return children;
-}
-
-// En tu Router.jsx
-<Route
-  path="/reserva-clases"
-  element={
-    <PrivateRoute>
-      <ReservaClases />
-    </PrivateRoute>
-  }
-/>
-
-const Navbar = () => {
-  const { user } = useAuth();
-  return (
-    <nav>
-      {/* ...otros enlaces */}
-      {user && <Link to="/reserva-clases">Reservar clase</Link>}
-    </nav>
-  );
-};
 
 export default ReservaClases;

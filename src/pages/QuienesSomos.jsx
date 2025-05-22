@@ -2,7 +2,7 @@ import { Box, Grid } from "@mui/material";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
-import { useState } from "react";
+
 
 const fotoIrene = import.meta.env.VITE_FOTO_IRENE;
 const fotoMarta = import.meta.env.VITE_FOTO_MARTA;
