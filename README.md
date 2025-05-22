@@ -1,12 +1,76 @@
-# React + Vite
+# 🌱 Cuerpo Despierto – Plataforma de Movimiento Consciente
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bienvenido al proyecto **Cuerpo Despierto**, una plataforma pedagógica diseñada para ofrecer clases de movimiento consciente, enfocadas en el bienestar corporal, la introspección y la práctica guiada.
 
-Currently, two official plugins are available:
+Este proyecto está dividido en dos partes:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🧩 **Frontend**: SPA desarrollada con **React**, **Material UI** y **Axios**
+- 🔐 **Backend**: API REST desarrollada con **Spring Boot**, seguridad mediante **JWT**, y persistencia en **PostgreSQL**
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🔗 Índice
+
+- [🧘 Frontend](#-frontend)
+  - [Tecnologías](#tecnologías)
+  - [Estructura](#estructura)
+  - [Instalación y ejecución](#instalación-y-ejecución-frontend)
+  - [📌 Autores y Licencia](#-autores-y-licencia)
+
+
+## 🧘 Frontend
+
+### Tecnologías
+
+- [React](https://reactjs.org/)
+- [Material UI](https://mui.com/)
+- [React Router DOM](https://reactrouter.com/)
+- [Axios](https://axios-http.com/)
+- [Vite](https://vitejs.dev/)
+
+### Estructura
+
+src/
+├── api/axios.js # Configuración de Axios
+├── components/ # Navbar, Footer y otros componentes reutilizables
+├── config/
+│ ├── AuthContext.jsx # Contexto global para el estado de autenticación
+│ └── Router.jsx # Rutas públicas y protegidas (con RequireAuth)
+├── pages/
+│ ├── Home.jsx # Página de inicio
+│ ├── Login.jsx # Inicio de sesión
+│ ├── Register.jsx # Registro de usuarios
+│ ├── Clases.jsx # Página protegida con clases de movimiento
+│ ├── Contacto.jsx # Formulario de contacto
+│ └── QuienesSomos.jsx # Información institucional
+└── main.jsx # Punto de entrada principal
+
+
+### Instalación y ejecución 
+
+1. Clona el repositorio:
+
+```bash
+git clone https://github.com/tu-usuario/cuerpo-despierto-front.git
+cd cuerpo-despierto-front
+
+2. Instala las dependencias:
+
+npm install
+
+3. Ejecuta la aplicación:
+
+npm run dev
+
+4. La aplicación estará disponible en:
+
+http://localhost:5173
+
+📌 Autores y Licencia
+
+Desarrollado por:
+Israel Espin 
+
+Licencia:
+Este proyecto se distribuye bajo la licencia MIT.
+
